@@ -3,12 +3,12 @@ import { getFirestore } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
 
 const firebaseConfig = {
-	apiKey: 'AIzaSyAJ_7GA4_0X3f7-5UAEZCyKfHVfWCe8DAM',
-	authDomain: 'timeismoney-a116f.firebaseapp.com',
-	projectId: 'timeismoney-a116f',
-	storageBucket: 'timeismoney-a116f.appspot.com',
-	messagingSenderId: '10359526115',
-	appId: '1:10359526115:web:d53957bdcacc19ffa2abd6'
+	apiKey: import.meta.env.VITE_FB_APIKEY,
+	authDomain: import.meta.env.VITE_FB_AUTHDOMAIN,
+	projectId: import.meta.env.VITE_FB_PROJECTID,
+	storageBucket: import.meta.env.VITE_FB_STORAGEBUCKET,
+	messagingSenderId: import.meta.env.VITE_FB_MESSAGING_SENDERID,
+	appId: import.meta.env.VITE_FB_APPID
 }
 
 export const app = initializeApp(firebaseConfig)
