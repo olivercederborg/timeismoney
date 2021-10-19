@@ -1,4 +1,6 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+import { doesProjectExist } from 'composables/firebase/project'
+
 import Home from '../views/Home.vue'
 
 const routes = [
@@ -9,19 +11,22 @@ const routes = [
 		component: () => import('../views/Projects.vue')
 	},
 	{
-		path: '/project',
+		path: '/projects/:id',
 		name: 'Project',
-		component: () => import('../views/Project.vue')
+		component: () => import('../views/Project.vue'),
+		async beforeEnter(to: any, from: any, next: any) {
+			if (!(await doesProjectExist(to.params.id))) {
+				next({
+					name: 'Projects'
+				})
+			} else next()
+		}
 	}
 ]
 
-// 3. Create the router instance and pass the `routes` option
-// You can pass in additional options here, but let's
-// keep it simple for now.
 const router = createRouter({
-	// 4. Provide the history implementation to use. We are using the hash history for simplicity here.
-	history: createWebHashHistory(),
-	routes // short for `routes: routes`
+	history: createWebHistory(),
+	routes
 })
 
 export default router
