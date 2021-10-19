@@ -3,7 +3,7 @@ import { ref, computed } from 'vue'
 const useStopWatch = () => {
 	let startTime = ref(0)
 	let elapsedTime = ref(0)
-	let timerInterval: NodeJS.Timer
+	let timerInterval: any
 	let isStarted = ref(false)
 
 	const start = () => {
