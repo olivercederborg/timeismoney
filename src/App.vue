@@ -14,11 +14,14 @@
 				displayName: user.displayName,
 				email: user.email,
 				uid: user.uid,
-				photoURL: user.photoURL
+				photoURL: user.photoURL,
+				authProvider: user.providerId
 			})
+			store.setLoading(false)
 		} else {
 			router.push('/')
 			store.setUser(null)
+			store.setLoading(false)
 		}
 	})
 </script>
