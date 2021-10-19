@@ -1,5 +1,5 @@
 import { doc, getDoc, setDoc } from '@firebase/firestore'
-import { User } from '../types'
+import { User } from 'types/index'
 import { db } from './firebase'
 
 export const createUser = async (userData: User) => {
